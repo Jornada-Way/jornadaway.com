@@ -13,8 +13,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/quiz.css">
 </head>
-<body>
+<body data-base="">
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Jornada home"><img src="assets/img/logo-white.svg" alt="Jornada"></a>
@@ -30,7 +31,7 @@
     <p class="lede">Merging ancient wisdom with modern insight. Guidance, ceremony and self-awareness tools for the path of awakening.</p>
     <div class="actions">
       <a class="btn btn-primary" href="offerings.html">Explore Offerings</a>
-      <a class="btn btn-ghost" href="#mission">Our Mission</a>
+      <a class="btn btn-ghost" href="#enneagram">Take the Enneagram Quiz</a>
     </div>
   </div>
   <div class="scroll-cue"></div>
@@ -46,6 +47,17 @@
         <p>Jornada exists to guide individuals through their journey of self-awareness, offering tools rooted in the Enneagram, Human Design and astrology, alongside ceremony and time in nature.</p>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="qz-section center" id="enneagram">
+  <div class="wrap">
+    <span class="eyebrow">Enneagram Assessment</span>
+    <h2>Discover your Enneagram subtype</h2>
+    <p class="lede">Nine types. Three instincts. Twenty-seven ways of being human. Find the one that is yours and receive a personal path to growth.</p>
+    <div class="qz-teaser"><span>48 statements</span><span>About 8 minutes</span><span>27 subtype profiles</span><span>Free</span></div>
+    <div class="qz-wrap" id="enneagram-quiz"></div>
+    <p style="margin-top:28px;font-family:var(--sans);font-size:.9rem;opacity:.7"><a href="enneagram/index.html" style="color:var(--cosmic-teal)">Explore all 27 subtypes &rarr;</a></p>
   </div>
 </section>
 
@@ -130,6 +142,8 @@
     </div>
   </div>
 </footer>
+<script src="assets/js/enneagram-data.js"></script>
+<script src="assets/js/quiz.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
