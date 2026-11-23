@@ -284,3 +284,11 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--cosmic-blue
   .inquiry { grid-template-columns: 1fr; }
   .offer-head img { width: 64px; height: 64px; }
 }
+
+/* Doors */
+a.tool { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+a.tool p { flex: 1; }
+.tool .more { font-family: var(--sans); font-weight: 500; font-size: .85rem; color: var(--cosmic-teal); margin-top: 18px; }
+.mv-item h3 { font-size: 1.7rem; }
+@media (max-width: 900px) { .mv[style*="repeat(3"] { grid-template-columns: 1fr !important; } .tools[style*="repeat(4"] { grid-template-columns: repeat(2,1fr) !important; } }
+.light .qz-callout, .soft .qz-callout { background: var(--teal-soft); border-radius: 18px; padding: 18px 22px; color: var(--nightsky); }

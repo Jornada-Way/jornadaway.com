@@ -121,7 +121,7 @@
     const id = (new URLSearchParams(location.search).get("r") || "").toLowerCase();
     const m = id.match(/^(sp|so|sx)-([1-9])$/);
     if (!m || !D.subtypes[id]) {
-      root.innerHTML = `<section class="light"><div class="wrap center"><h2>Result not found</h2><p class="lede">Take the assessment to discover your Enneagram subtype.</p><a class="btn btn-ghost" href="${base}index.html#enneagram">Take the Assessment</a></div></section>`;
+      root.innerHTML = `<section class="light"><div class="wrap center"><h2>Result not found</h2><p class="lede">Take the assessment to discover your Enneagram subtype.</p><a class="btn btn-ghost" href="${base}doors.html#enneagram">Take the Assessment</a></div></section>`;
       return;
     }
     const inst = m[1].toUpperCase(), type = +m[2];
@@ -205,7 +205,7 @@
               <p>A test is a beginning. In an Enneagram and Astrology Reading, Rachel reads your type alongside your birth chart, two lenses on who you are and where you are headed.</p>
               <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
                 <a class="btn btn-primary" href="${base}offerings.html?offering=rachel-enneagram-astrology#inquire">Book a Reading</a>
-                <a class="btn btn-ghost" href="${base}index.html#enneagram">Retake the Assessment</a>
+                <a class="btn btn-ghost" href="${base}doors.html#enneagram">Retake the Assessment</a>
               </div>
             </div>
             <div>

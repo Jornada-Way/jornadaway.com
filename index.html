@@ -13,14 +13,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/quiz.css">
 </head>
-<body data-base="">
+<body>
 <header class="site-header">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Jornada home"><img src="assets/img/logo-white.svg" alt="Jornada"></a>
     <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
-    <nav class="nav"><a href="index.html" class="active">Home</a><a href="offerings.html">Offerings</a><a href="about.html">About</a><a href="writings.html">Writings</a><a class="btn btn-primary" href="index.html#waitlist">Join the Journey</a></nav>
+    <nav class="nav"><a href="index.html" class="active">Home</a><a href="doors.html">Doors</a><a href="offerings.html">Offerings</a><a href="about.html">About</a><a href="writings.html">Writings</a><a class="btn btn-primary" href="index.html#waitlist">Join the Journey</a></nav>
   </div>
 </header>
 
@@ -31,7 +30,7 @@
     <p class="lede">Merging ancient wisdom with modern insight. Guidance, ceremony and self-awareness tools for the path of awakening.</p>
     <div class="actions">
       <a class="btn btn-primary" href="offerings.html">Explore Offerings</a>
-      <a class="btn btn-ghost" href="#enneagram">Take the Enneagram Quiz</a>
+      <a class="btn btn-ghost" href="doors.html#enneagram">Take the Enneagram Quiz</a>
     </div>
   </div>
   <div class="scroll-cue"></div>
@@ -50,23 +49,13 @@
   </div>
 </section>
 
-<section class="qz-section center" id="enneagram">
-  <div class="wrap">
-    <span class="eyebrow">Enneagram Assessment</span>
-    <h2>Discover your Enneagram subtype</h2>
-    <p class="lede">Nine types. Three instincts. Twenty-seven ways of being human. Find the one that is yours and receive a personal path to growth.</p>
-    <div class="qz-teaser"><span>48 statements</span><span>About 8 minutes</span><span>27 subtype profiles</span><span>Free</span></div>
-    <div class="qz-wrap" id="enneagram-quiz"></div>
-    <p style="margin-top:28px;font-family:var(--sans);font-size:.9rem;opacity:.7"><a href="enneagram/index.html" style="color:var(--cosmic-teal)">Explore all 27 subtypes &rarr;</a></p>
-  </div>
-</section>
-
 <section>
   <div class="wrap center">
     <span class="eyebrow">A Transpersonal Blend</span>
     <h2>Many doors, one journey</h2>
     <p class="lede">No single system holds the whole truth of a person. Jornada brings together transpersonal tools that each illuminate a different facet of who you are, and lets them speak to one another.</p>
-    <div class="tools" style="text-align:left"><div class="tool reveal"><img class="ico inv" src="assets/img/icon-seeker.svg" alt=""><h3>Enneagram</h3><p>Nine patterns of the personality, and the path of growth hidden inside each one.</p></div><div class="tool reveal"><img class="ico inv" src="assets/img/icon-explorer.svg" alt=""><h3>Astrology</h3><p>The map of the sky at the moment you arrived, read as a story about who you are becoming.</p></div><div class="tool reveal"><img class="ico" src="assets/img/icon-guide.png" alt=""><h3>Human Design</h3><p>A blueprint of how your energy works, so you can make decisions that feel true.</p></div><div class="tool reveal"><img class="ico" src="assets/img/mark-teal.svg" alt=""><h3>Tarot</h3><p>Archetypal images that open a conversation with your intuition.</p></div><div class="tool reveal"><img class="ico" src="assets/img/icon-ceremony.svg" alt=""><h3>Ceremony with Nature</h3><p>Ritual on the land. The oldest teacher, and often the most honest one.</p></div></div>
+    <div class="tools" style="text-align:left"><a class="tool reveal" href="doors/enneagram.html"><img class="ico inv" src="assets/img/icon-seeker.svg" alt=""><h3>Enneagram</h3><p>Nine patterns of the personality, and the path of growth hidden inside each one.</p><span class="more">Open this door &rarr;</span></a><a class="tool reveal" href="doors/astrology.html"><img class="ico inv" src="assets/img/icon-explorer.svg" alt=""><h3>Astrology</h3><p>The map of the sky at the moment you arrived, read as a story about who you are becoming.</p><span class="more">Open this door &rarr;</span></a><a class="tool reveal" href="doors/human-design.html"><img class="ico" src="assets/img/icon-guide.png" alt=""><h3>Human Design</h3><p>A blueprint of how your energy works, so you can make decisions that feel true.</p><span class="more">Open this door &rarr;</span></a><a class="tool reveal" href="doors/tarot.html"><img class="ico" src="assets/img/mark-teal.svg" alt=""><h3>Tarot</h3><p>Archetypal images that open a conversation with your intuition.</p><span class="more">Open this door &rarr;</span></a><a class="tool reveal" href="doors/ceremony.html"><img class="ico" src="assets/img/icon-ceremony.svg" alt=""><h3>Ceremony with Nature</h3><p>Ritual on the land. The oldest teacher, and often the most honest one.</p><span class="more">Open this door &rarr;</span></a></div>
+    <a class="btn btn-ghost" href="doors.html" style="margin-top:44px">Explore the Doors</a>
   </div>
 </section>
 
@@ -121,6 +110,7 @@
       <div>
         <h4>Explore</h4>
         <ul>
+          <li><a href="doors.html">Doors</a></li>
           <li><a href="offerings.html">Offerings</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="writings.html">Writings</a></li>
@@ -142,8 +132,6 @@
     </div>
   </div>
 </footer>
-<script src="assets/js/enneagram-data.js"></script>
-<script src="assets/js/quiz.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>
