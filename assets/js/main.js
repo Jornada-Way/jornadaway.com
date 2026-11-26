@@ -3,8 +3,8 @@
 // Form endpoints. Paste the Formspree (or similar) URLs here once the accounts exist.
 // Until then, the forms show a friendly note instead of sending.
 const JORNADA_FORMS = {
-  inquiry: "",   // e.g. "https://formspree.io/f/xxxxxxx"
-  waitlist: ""   // e.g. "https://formspree.io/f/yyyyyyy"
+  inquiry: "https://formsubmit.co/ajax/rachel@jornadaway.com",
+  waitlist: "https://formsubmit.co/ajax/rachel@jornadaway.com"
 };
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -68,7 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       try {
-        const res = await fetch(endpoint, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+        const data = new FormData(form);
+        data.append("_subject", form.dataset.form === "waitlist" ? "New Jornada waitlist signup" : "New Jornada inquiry");
+        data.append("_template", "table");
+        data.append("_captcha", "false");
+        if (data.get("email")) data.append("_replyto", data.get("email"));
+        const res = await fetch(endpoint, { method: "POST", body: data, headers: { Accept: "application/json" } });
         if (!res.ok) throw new Error();
         form.reset();
         if (note) note.textContent = form.dataset.form === "waitlist"
