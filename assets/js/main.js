@@ -4,8 +4,33 @@
 // Until then, the forms show a friendly note instead of sending.
 const JORNADA_FORMS = {
   inquiry: "https://formsubmit.co/ajax/rachel@jornadaway.com",
-  waitlist: "https://formsubmit.co/ajax/rachel@jornadaway.com"
+  waitlist: "mailchimp"
 };
+
+// Mailchimp: "Jornada Way Website" embedded form in the main audience, tagged "Jornada Way".
+const JORNADA_MAILCHIMP = {
+  url: "https://daughterofdirtandstars.us19.list-manage.com/subscribe/post-json",
+  u: "5676aba5c19c6555e904d469a",
+  id: "238f0de556",
+  f_id: "007bc2e1f0",
+  tags: "647",
+  honey: "b_5676aba5c19c6555e904d469a_238f0de556"
+};
+
+function mailchimpSubscribe(email) {
+  return new Promise((resolve, reject) => {
+    const cb = "jornadaMc" + Date.now();
+    const m = JORNADA_MAILCHIMP;
+    const q = new URLSearchParams({ u: m.u, id: m.id, f_id: m.f_id, tags: m.tags, EMAIL: email, [m.honey]: "", c: cb });
+    const s = document.createElement("script");
+    const done = () => { delete window[cb]; s.remove(); };
+    window[cb] = res => { done(); resolve(res); };
+    s.onerror = () => { done(); reject(new Error("network")); };
+    s.src = m.url + "?" + q.toString();
+    document.body.appendChild(s);
+    setTimeout(() => { if (window[cb]) { done(); reject(new Error("timeout")); } }, 12000);
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   // Header background on scroll
@@ -65,6 +90,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const endpoint = JORNADA_FORMS[form.dataset.form];
       if (!endpoint) {
         if (note) note.textContent = "Thank you. This form is almost ready. Please check back very soon.";
+        return;
+      }
+      if (endpoint === "mailchimp") {
+        const email = (form.querySelector('input[type="email"]') || {}).value || "";
+        try {
+          const res = await mailchimpSubscribe(email);
+          const msg = String(res && res.msg || "");
+          if (res && res.result === "success") {
+            form.reset();
+            if (note) note.textContent = /confirm/i.test(msg)
+              ? "Almost there. Check your inbox to confirm your subscription."
+              : "You're on the list. We'll be in touch as the journey unfolds.";
+          } else if (/already subscribed/i.test(msg)) {
+            if (note) note.textContent = "You're already on the list. Thank you for walking with us.";
+          } else {
+            if (note) note.textContent = "Please check your email address and try again.";
+          }
+        } catch {
+          if (note) note.textContent = "Something went wrong. Please try again in a moment.";
+        }
         return;
       }
       try {
