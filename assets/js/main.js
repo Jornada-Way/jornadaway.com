@@ -169,3 +169,28 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
   window.addEventListener("resize", close);
 })();
+
+/* Stripe Payment Links: adds a "Book and Pay" button to offer cards that have one */
+(function () {
+  const PAY = {
+    "rachel-guide-session": "https://buy.stripe.com/5kQdR2apw1vfdV22fU87K00",
+    "rachel-3-month": "https://buy.stripe.com/fZu6oAapw8XHeZ69Im87K01",
+    "rachel-6-month": "https://buy.stripe.com/eVqeV6418a1L2ck3jY87K02",
+    "scarlet-tarot": "https://buy.stripe.com/9B67sE0OW7TD4ksdYC87K03"
+  };
+  document.querySelectorAll(".offer a[data-offering]").forEach((inq) => {
+    const url = PAY[inq.dataset.offering];
+    if (!url) return;
+    const row = document.createElement("div");
+    row.className = "offer-actions";
+    const pay = document.createElement("a");
+    pay.className = "btn btn-primary";
+    pay.href = url;
+    pay.target = "_blank";
+    pay.rel = "noopener";
+    pay.textContent = "Book and Pay";
+    inq.parentNode.insertBefore(row, inq);
+    row.appendChild(pay);
+    row.appendChild(inq);
+  });
+})();
