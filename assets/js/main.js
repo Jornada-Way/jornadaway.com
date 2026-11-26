@@ -130,3 +130,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+/* Contact menu: Gmail, default email app, or copy address */
+(function () {
+  let menu = null;
+  function close() { if (menu) { menu.remove(); menu = null; } }
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="mailto:"]');
+    if (!a) { if (menu && !menu.contains(e.target)) close(); return; }
+    e.preventDefault();
+    if (menu && menu.dataset.for === a.href) { close(); return; }
+    close();
+    const email = a.getAttribute("href").replace(/^mailto:/, "").split("?")[0];
+    const gmail = "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(email);
+    menu = document.createElement("div");
+    menu.className = "contact-menu";
+    menu.dataset.for = a.href;
+    menu.innerHTML =
+      '<a href="' + gmail + '" target="_blank" rel="noopener">Open in Gmail</a>' +
+      '<a href="mailto:' + email + '" data-direct>Use my email app</a>' +
+      '<button type="button">Copy ' + email + '</button>';
+    menu.querySelector("[data-direct]").addEventListener("click", (ev) => {
+      ev.stopPropagation(); window.location.href = "mailto:" + email; close();
+    });
+    menu.querySelector("button").addEventListener("click", async (ev) => {
+      ev.stopPropagation();
+      try { await navigator.clipboard.writeText(email); ev.target.textContent = "Copied"; }
+      catch { ev.target.textContent = email; }
+      setTimeout(close, 1200);
+    });
+    menu.querySelector("a[target]").addEventListener("click", () => setTimeout(close, 100));
+    document.body.appendChild(menu);
+    const r = a.getBoundingClientRect();
+    const left = Math.min(r.left + window.scrollX, window.scrollX + document.documentElement.clientWidth - menu.offsetWidth - 12);
+    menu.style.left = Math.max(12, left) + "px";
+    menu.style.top = (r.bottom + window.scrollY + 8) + "px";
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  window.addEventListener("resize", close);
+})();
