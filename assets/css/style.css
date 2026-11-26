@@ -292,3 +292,6 @@ a.tool p { flex: 1; }
 .mv-item h3 { font-size: 1.7rem; }
 @media (max-width: 900px) { .mv[style*="repeat(3"] { grid-template-columns: 1fr !important; } .tools[style*="repeat(4"] { grid-template-columns: repeat(2,1fr) !important; } }
 .light .qz-callout, .soft .qz-callout { background: var(--teal-soft); border-radius: 18px; padding: 18px 22px; color: var(--nightsky); }
+.contact-menu { position: absolute; z-index: 1000; min-width: 230px; background: var(--lunar); border-radius: 14px; box-shadow: 0 14px 40px rgba(0,0,0,.22); padding: 8px; display: flex; flex-direction: column; font-family: var(--sans); }
+.contact-menu a, .contact-menu button { display: block; text-align: left; padding: 11px 14px; border-radius: 9px; color: var(--nightsky); font: 500 .92rem var(--sans); background: none; border: 0; cursor: pointer; text-decoration: none; }
+.contact-menu a:hover, .contact-menu button:hover { background: var(--teal-soft); }
